@@ -1,0 +1,232 @@
+@keyframes bounce {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: -0.2rem;
+  }
+  50% {
+    top: 0;
+  }
+  75% {
+    top: 0.2rem;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+.chatroom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .roomName {
+    padding: 0.7rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background-color: #f5f5f5;
+    -webkit-app-region: drag;
+  }
+
+  .chatList {
+    background-color: #b0c7d4;
+    height: 100%;
+    border-radius: 0.4rem 0 0 0.4rem;
+    padding: 0 0.1rem;
+
+    .virtualScroll {
+      padding: 0.5rem 1rem;
+
+      .chat {
+        display: flex;
+        margin-top: 0.3rem;
+
+        .profile {
+          height: 2.5rem;
+          width: 2.5rem;
+          border-radius: 0.7rem;
+          background-size: contain;
+          background-position: center;
+          margin-right: 0.5rem;
+          display: table;
+        }
+
+        .text {
+          display: flex;
+          flex-direction: column;
+          max-width: 90%;
+
+          .name,
+          .space {
+            margin-bottom: 0.2rem;
+          }
+
+          .image {
+            border-radius: 0.5rem;
+            background-color: #fefefe;
+          }
+
+          .message {
+            background-color: white;
+            padding: 0.5rem 0.7rem;
+            border-radius: 0.5rem;
+            width: max-content;
+            max-width: 95%;
+            transition: background-color 0.3s;
+            position: relative;
+            user-select: text;
+
+            .reply {
+              padding: 0.1rem 0 0.4rem 0;
+              margin-bottom: 0.5rem;
+              border-bottom: 1px solid #e1e1e1;
+              display: flex;
+              flex-direction: column;
+              color: #454545;
+
+              .label {
+                font-size: 0.8rem;
+              }
+            }
+
+            .content {
+              word-break: break-all;
+              user-select: text;
+            }
+
+            &.error {
+              color: #838383;
+
+              .line {
+                display: flex;
+                align-items: center;
+
+                .error {
+                  margin-right: 0.2rem;
+                  display: flex;
+                  align-items: center;
+                }
+              }
+
+              .msgType {
+                font-size: 0.8rem;
+                user-select: text;
+              }
+            }
+          }
+
+          &.invite {
+            max-width: 100%;
+            width: 100%;
+
+            .message {
+              background-color: rgba(131, 131, 131, 0.187);
+              border-radius: 1rem;
+              padding: 0.5rem 1rem;
+              margin: 0.5rem auto;
+            }
+          }
+        }
+
+        &.focus .message {
+          background-color: #f5f5f5;
+          animation: bounce 0.5s infinite linear;
+        }
+      }
+
+      &::-webkit-scrollbar {
+        background-color: transparent;
+        width: 1rem;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: #f5f5f5;
+
+        &:hover {
+          background-color: #f7f7f7;
+        }
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #babac0;
+        border-radius: 1rem;
+        border: 0.3rem solid #f5f5f5;
+
+        &:hover {
+          background-color: #a0a0a5;
+          border: 0.2rem solid #ffffff;
+        }
+      }
+    }
+  }
+
+  .form {
+    padding: 0.5rem 1rem 0.5rem 0;
+    box-sizing: border-box;
+    display: flex;
+    background-color: #f5f5f5;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 0.4rem;
+      height: 2.5rem;
+      width: 2.5rem;
+      transition: background-color 0.3s;
+
+      &[role='form'] {
+        margin-left: 0.5rem;
+
+        &:not(.disabled) {
+          background-color: #fee500;
+        }
+      }
+    }
+
+    input {
+      padding: 0 1rem;
+      height: 2.5rem;
+      background-color: #ececed;
+      font-size: 1rem;
+      border: 0;
+      border-radius: 0.4rem;
+      box-sizing: border-box;
+
+      &[type='text'] {
+        width: calc(100% - 6rem);
+      }
+
+      &[type='submit'],
+      &[type='file'] {
+        display: none;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    label.file {
+      height: 2.5rem;
+      width: 2.5rem;
+      background-color: #ececed;
+      font-size: 1rem;
+      border: 0;
+      border-radius: 0.4rem;
+      box-sizing: border-box;
+      margin-right: 0.5rem;
+      display: table;
+
+      .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 2.5rem;
+        width: 2.5rem;
+      }
+    }
+  }
+}
